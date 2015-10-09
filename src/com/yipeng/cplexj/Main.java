@@ -9,7 +9,36 @@ import ilog.cplex.*;
 public class Main {
 
     public static void main(String[] args) {
+        readTestGraph();
+    }
 
+    public static void readTestGraph() {
+        Graph graph = new Graph();
+        graph.read("res/dat/testcase1.dat");
+
+        Utils.console("G(" + graph.getNbVertices() + ", " + graph.getNbArcs() + ", " + graph.getNbRequests() + ", " +
+                graph.getNbBlockages() + ")");
+
+        Utils.console("Vertices:");
+        Utils.console(graph.getVertices());
+        Utils.console("Arcs:");
+        Utils.console(graph.getArcs());
+        Utils.console("Requests:");
+        Utils.console(graph.getRequests());
+        Utils.console("Blockages:");
+        Utils.console(graph.getBlockages());
+    }
+
+    public static void solveODS() {
+        try {
+            IloCplex cplex = new IloCplex();
+
+        } catch(IloException e) {
+            System.err.println("Concert exception caught: " + e);
+        }
+    }
+
+    public static void simpleLP() {
         try {
             IloCplex cplex = new IloCplex();
 
@@ -34,6 +63,6 @@ public class Main {
         } catch (IloException e) {
             System.err.println("Concert exception caught: " + e);
         }
-
     }
+
 }
